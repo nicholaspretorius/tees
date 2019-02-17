@@ -11,6 +11,7 @@ export default ({ data }) => {
     <Layout>
       <h1>{product.name}</h1>
       <h4>Price: R{product.price}</h4>
+      <button className="snipcart-add-item">Add to Cart</button>
       <p>{product.createdAt}</p>
       <p>{product.description}</p>
       <Img fluid={product.image.fluid} />

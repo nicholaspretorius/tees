@@ -6,7 +6,7 @@ import Layout from "../components/layout";
 export default ({ data, pageContext }) => {
   return (
     <Layout>
-      <h1>Shop</h1>
+      <h1>Tees Shop.</h1>
       <h4>
         {data.allContentfulProducts.totalCount}{" "}
         {data.allContentfulProducts.totalCount === 1 ? " Product" : " Products"}
@@ -14,10 +14,15 @@ export default ({ data, pageContext }) => {
       </h4>
       {data.allContentfulProducts.edges.map(({ node: product }) => (
         <div key={product.id}>
-          <Link to={`products/${product.slug}`}>
+          <Link
+            to={`products/${product.slug}`}
+            style={{ textDecoration: "none", color: "darkpurple" }}
+          >
             <h3>{product.name}</h3>
           </Link>
-          <h4>R{product.price}</h4>
+          <h4 style={{ fontSize: "1.2rem", fontWeight: 300, color: "#f60" }}>
+            R{product.price}
+          </h4>
           <img src={product.image.fluid.src} alt={product.name} />
         </div>
       ))}
@@ -47,3 +52,5 @@ export const query = graphql`
     }
   }
 `;
+
+// ...GatsbyContentfulFluid_tracedSVG
