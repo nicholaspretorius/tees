@@ -1,6 +1,7 @@
 import React from "react";
 
 import { graphql, Link } from "gatsby";
+import Img from "gatsby-image";
 
 import Layout from "./../components/layout";
 
@@ -10,7 +11,9 @@ export default ({ data }) => {
     <Layout>
       <h1>{product.name}</h1>
       <h4>Price: R{product.price}</h4>
-      <img src={product.image.fluid.src} alt={product.name} />
+      <p>{product.createdAt}</p>
+      <p>{product.description}</p>
+      <Img fluid={product.image.fluid} />
       <Link to="/products">Back to Shop</Link>
     </Layout>
   );
@@ -23,9 +26,10 @@ export const query = graphql`
       name
       price
       description
+      createdAt(formatString: "MMMM Do, YYYY, h:mm:ss a")
       image {
-        fluid {
-          src
+        fluid(maxWidth: 800) {
+          ...GatsbyContentfulFluid
         }
       }
     }

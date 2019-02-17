@@ -38,6 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
       allContentfulProducts {
+        totalCount
         edges {
           node {
             slug
