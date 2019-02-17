@@ -14,7 +14,10 @@ const Header = ({ siteTitle }) => (
       style={{
         margin: `0 auto`,
         maxWidth: 960,
-        padding: `1.45rem 1.0875rem`
+        padding: `1.45rem 1.0875rem`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between"
       }}
     >
       <span style={{ display: "flex", alignItems: "center" }}>
@@ -40,6 +43,29 @@ const Header = ({ siteTitle }) => (
           </Link>
         </h1>
       </span>
+
+      <div
+        style={{
+          color: "white",
+          cursor: "pointer",
+          fontSize: ".8rem"
+        }}
+        className="snipcart-summary snipcart-checkout"
+      >
+        <div>
+          <strong>My Cart</strong>
+        </div>
+        <div>
+          <span className="snipcart-total-items" /> Items in Cart
+        </div>
+        <div>
+          Total Price{" "}
+          <span
+            className="snipcart-total-price"
+            style={{ fontWeight: "bold" }}
+          />
+        </div>
+      </div>
     </div>
   </header>
 );
