@@ -29,6 +29,7 @@ export const query = graphql`
       totalCount
       edges {
         node {
+          id
           name
           description
           price
