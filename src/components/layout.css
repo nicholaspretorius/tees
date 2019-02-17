@@ -639,7 +639,7 @@ pre tt:after {
 /* netlify identity */
 
 .netlify-identity-menu {
-  margin: 0 0 0 3px;
+  margin: 10px 0 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -647,11 +647,13 @@ pre tt:after {
 
 .netlify-identity-menu li {
   list-style-type: none;
+  margin-right: 1em;
 }
 
 .netlify-identity-signup,
 .netlify-identity-login,
-.netlify-identity-logout {
+.netlify-identity-logout,
+.netlify-identity-item {
   color: white;
   text-decoration: none;
 }
