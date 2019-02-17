@@ -10,6 +10,8 @@ const { createFilePath } = require("gatsby-source-filesystem");
 
 const postTemplate = path.resolve("./src/templates/post.js");
 const blogTemplate = path.resolve("./src/templates/blog.js");
+const shopTemplate = path.resolve("./src/templates/shop.js");
+const productTemplate = path.resolve("./src/templates/product.js");
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
@@ -32,6 +34,13 @@ exports.createPages = async ({ graphql, actions }) => {
             fields {
               slug
             }
+          }
+        }
+      }
+      allContentfulProducts {
+        edges {
+          node {
+            slug
           }
         }
       }
@@ -68,6 +77,39 @@ exports.createPages = async ({ graphql, actions }) => {
         isLastPage,
         currentPage,
         totalPages
+      }
+    });
+  });
+
+  const products = result.data.allContentfulProducts.edges;
+  const productsPerPage = 2;
+  const totalProducts = Math.ceil(products.length / productsPerPage);
+  products.forEach(({ node: product }, index) => {
+    const currentProductPage = index + 1;
+    const isFirstProductPage = index === 0;
+    const isLastProductPage = currentProductPage === totalProducts;
+
+    createPage({
+      path: isFirstProductPage
+        ? "/products"
+        : `/products/${currentProductPage}`,
+      component: shopTemplate,
+      context: {
+        limit: productsPerPage,
+        skip: index * productsPerPage,
+        isFirstProductPage,
+        isLastProductPage,
+        totalProducts
+      }
+    });
+  });
+
+  products.forEach(({ node: product }) => {
+    createPage({
+      path: `products/${product.slug}`,
+      component: productTemplate,
+      context: {
+        slug: product.slug
       }
     });
   });
