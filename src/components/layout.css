@@ -635,3 +635,28 @@ pre tt:after {
   color: white;
   text-decoration: none;
 }
+
+/* netlify identity */
+
+.netlify-identity-menu {
+  margin: 0 0 0 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.netlify-identity-menu li {
+  list-style-type: none;
+}
+
+.netlify-identity-signup,
+.netlify-identity-login,
+.netlify-identity-logout {
+  color: white;
+  text-decoration: none;
+}
+
+.netlify-identity-signup:hover,
+.netlify-identity-login:hover {
+  text-decoration: underline;
+}
