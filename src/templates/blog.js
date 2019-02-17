@@ -20,6 +20,11 @@ export default ({ data, pageContext }) => {
             <h3>{node.frontmatter.title}</h3>
           </Link>
           <span>{node.frontmatter.date}</span>
+          <br />
+          <span>
+            Estimated time to read: {node.timeToRead}
+            {node.timeToRead === 1 ? " minute" : " minutes"}
+          </span>
           <p>{node.excerpt}</p>
         </div>
       ))}
@@ -60,11 +65,12 @@ export const query = graphql`
           fields {
             slug
           }
+          timeToRead
           frontmatter {
             title
-            date
+            date(formatString: "dddd, Do MMMM, YYYY", locale: "za")
           }
-          excerpt
+          excerpt(format: PLAIN)
         }
       }
     }
