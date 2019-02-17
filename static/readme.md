@@ -1,0 +1,1 @@
+Static folder can be used for resources that you do not want processed by Webpack. 
